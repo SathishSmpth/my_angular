@@ -1,0 +1,227 @@
+<div
+  class="card container py-3 px-2 mx-auto mt-5 bg-dark bg-opacity-75 text-white"
+>
+  <div class="card-body">
+    <form class="row" [formGroup]="userDetail">
+      <h1 class="text-center border-bottom pb-3">Registration Form</h1>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">First Name</label>
+        <input
+          type="text"
+          formControlName="firstName"
+          class="form-control focusedInput"
+          aria-describedby="emailHelp"
+        />
+        <div *ngIf="inValid">
+          <span *ngIf="userDetail.controls['firstName']?.errors?.['required']">
+            First Name is Required
+          </span>
+          <span *ngIf="userDetail.controls['firstName']?.errors?.['minlength']">
+            First Name must have minimum 4 Characters
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">Last Name</label>
+        <input
+          type="text"
+          class="form-control focusedInput"
+          formControlName="lastName"
+        />
+        <div *ngIf="inValid">
+          <span *ngIf="userDetail.controls['lastName']?.errors?.['required']">
+            Last Name is Required
+          </span>
+          <span *ngIf="userDetail.controls['lastName']?.errors?.['minlength']">
+            Last Name must have minimum 4 Characters
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">Date of Birth</label>
+        <input
+          type="date"
+          class="form-control focusedInput"
+          formControlName="dob" 
+        />
+        <div *ngIf="inValid">
+          <span *ngIf="userDetail.controls['dob']?.errors?.['required']">
+            Date of Birth is Required
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">Gender</label>
+        <select class="form-control focusedInput" formControlName="gender">
+          <option selected disabled>- Select Gender -</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <div *ngIf="inValid">
+          <span *ngIf="userDetail.controls['gender']?.errors?.['required']">
+            Gender is Required
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">Phone</label>
+        <input
+          type="number"
+          class="form-control focusedInput"
+          formControlName="phone"
+        />
+        <div *ngIf="inValid">
+          <span *ngIf="userDetail.controls['phone']?.errors?.['required']">
+            Phone is Required
+          </span>
+          <span
+            *ngIf="userDetail.controls['phone']?.errors?.['minlength'] || userDetail.controls['phone']?.errors?.['minlength']"
+          >
+            Enter valid Phone number
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control focusedInput"
+          formControlName="email"
+        />
+        <div *ngIf="inValid">
+          <span *ngIf="userDetail.controls['email']?.errors?.['required']">
+            Email is Required
+          </span>
+          <span *ngIf="userDetail.controls['email']?.errors?.['email'] ">
+            Enter valid Mail Id
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control focusedInput"
+          formControlName="password"
+        />
+        <div *ngIf="inValid">
+          <span *ngIf="userDetail.controls['password']?.errors?.['required']">
+            Password is Required
+          </span>
+          <span *ngIf="userDetail.controls['password']?.errors?.['pattern'] ">
+            Password Contains atleast one Uppercase,one Special Characters, one
+            Number
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control focusedInput"
+          formControlName="confirmPassword"
+        />
+        <div *ngIf="inValid">
+          <span
+            *ngIf="userDetail.controls['confirmPassword']?.errors?.['required']"
+          >
+            Confirm Password is Required
+          </span>
+          <span
+            *ngIf="userDetail.controls['confirmPassword']?.errors?.['pattern'] "
+          >
+            Confirm Password Contains atleast one Uppercase,one Special
+            Characters,one Number
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">City</label>
+        <input
+          type="text"
+          class="form-control focusedInput"
+          formControlName="city"
+        />
+        <div *ngIf="inValid">
+          <span *ngIf="userDetail.controls['city']?.errors?.['required']">
+            City is Required
+          </span>
+          <span *ngIf="userDetail.controls['city']?.errors?.['minlength'] ">
+            City must have atleast 4 characters
+          </span>
+          <span *ngIf="userDetail.controls['city']?.errors?.['pattern'] ">
+            City contains only Alphabets
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">State</label>
+        <input
+          type="text"
+          class="form-control focusedInput"
+          formControlName="state"
+        />
+        <div *ngIf="inValid">
+          <span *ngIf="userDetail.controls['state']?.errors?.['required']">
+            State is Required
+          </span>
+          <span *ngIf="userDetail.controls['state']?.errors?.['minlength'] ">
+            State must have atleast 4 characters
+          </span>
+          <span *ngIf="userDetail.controls['state']?.errors?.['pattern'] ">
+            State contains only Alphabets
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">Country</label>
+        <input
+          type="text"
+          class="form-control focusedInput"
+          formControlName="country"
+        />
+        <div *ngIf="inValid">
+          <span *ngIf="userDetail.controls['country']?.errors?.['required']">
+            Country is Required
+          </span>
+          <span *ngIf="userDetail.controls['country']?.errors?.['minlength'] ">
+            Country must have atleast 4 characters
+          </span>
+          <span *ngIf="userDetail.controls['country']?.errors?.['pattern'] ">
+            Country contains only Alphabets
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+        <label class="form-label">Pin</label>
+        <input
+          type="number"
+          class="form-control focusedInput"
+          formControlName="pin"
+        />
+        <div *ngIf="inValid">
+          <span *ngIf="userDetail.controls['pin']?.errors?.['required']">
+            Pin is Required
+          </span>
+          <span
+            *ngIf="(userDetail.controls['pin']?.errors?.['required'])!= true"
+          >
+          <span *ngIf="userDetail.controls['pin']?.errors?.['minlength'] " >
+            Enter valid Pin Number
+          </span>
+          </span>
+        </div>
+      </div>
+      <div class="col-12 d-flex justify-content-center mt-3">
+        <button
+          type="submit"
+          class="btn btn-light fs-5 px-5"
+          (click)="register()"
+        >
+          <b>Register</b>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<app-table [usersData]="multipleData" ></app-table>

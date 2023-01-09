@@ -1,0 +1,36 @@
+<div class="container py-3 px-2 mx-auto mt-5">
+  <div class="card-body">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">S.no</th>
+          <th scope="col">Name</th>
+          <th scope="col">Date of birth</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Password</th>
+          <th scope="col">City</th>
+          <th scope="col">State</th>
+          <th scope="col">Country</th>
+          <th scope="col">Pin</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of usersData; let i = index">
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ data.firstName }}{{ data.lastName}}</td>
+          <td>{{ data.dob }}</td>
+          <td>{{ data.gender }}</td>
+          <td>{{ data.phone }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.password }}</td>
+          <td>{{ data.city }}</td>
+          <td>{{ data.state }}</td>
+          <td>{{ data.country }}</td>
+          <td>{{ data.pin }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
