@@ -42,8 +42,8 @@
         <input
           type="date"
           class="form-control focusedInput"
-          formControlName="dob" 
-        />
+          formControlName="dob"
+        />  
         <div *ngIf="inValid">
           <span *ngIf="userDetail.controls['dob']?.errors?.['required']">
             Date of Birth is Required
@@ -112,15 +112,24 @@
             Password Contains atleast one Uppercase,one Special Characters, one
             Number
           </span>
+          <span
+            *ngIf="userDetail.controls['password']?.errors?.['passwordMismatch'] "
+          >
+            Password and Confirm password does not match
+          </span>
         </div>
       </div>
-      <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
-        <label class="form-label">Confirm Password</label>
-        <input
-          type="password"
-          class="form-control focusedInput"
-          formControlName="confirmPassword"
-        />
+      <div class="mb-3 col-md-6 col-lg-6 col-sm-12 position-relative">
+        <div class="input-group">
+          <input
+            type="password"
+            class="form-control"
+            formControlName="confirmPassword"
+          />
+          <button class="btn bg-secondary position-absolute end-0 p-2 bottom-0">
+            Show Password
+          </button>
+        </div>
         <div *ngIf="inValid">
           <span
             *ngIf="userDetail.controls['confirmPassword']?.errors?.['required']"
@@ -132,6 +141,11 @@
           >
             Confirm Password Contains atleast one Uppercase,one Special
             Characters,one Number
+          </span>
+          <span
+            *ngIf="userDetail.controls['confirmPassword']?.errors?.['passwordMismatch'] "
+          >
+            Confirm password does not match with Password
           </span>
         </div>
       </div>
@@ -203,12 +217,8 @@
           <span *ngIf="userDetail.controls['pin']?.errors?.['required']">
             Pin is Required
           </span>
-          <span
-            *ngIf="(userDetail.controls['pin']?.errors?.['required'])!= true"
-          >
-          <span *ngIf="userDetail.controls['pin']?.errors?.['minlength'] " >
-            Enter valid Pin Number
-          </span>
+          <span *ngIf="userDetail.controls['pin']?.errors?.['minlength'] ">
+            Pin Number requires minimum six numbers
           </span>
         </div>
       </div>
@@ -224,4 +234,6 @@
     </form>
   </div>
 </div>
-<app-table [usersData]="multipleData" ></app-table>
+<div *ngIf="multipleData">
+  <app-table [usersData]="multipleData"></app-table>
+</div>
